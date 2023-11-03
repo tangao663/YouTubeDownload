@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    <style>
+        #loading-icon {
+            display: none;
+        }
+
+        #download-complete-icon {
+            display: none;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <form id="downloadForm" action="/download" method="post">
+        <label for="youtube_url">YouTube URL:</label>
+        <input type="text" id="youtube_url" name="youtube_url" required>
+        <button type="button" onclick="downloadVideo()">Download</button>
+        <div id="loading-icon">Loading...</div>
+        <div id="download-complete-icon">✓</div>
+    </form>
+
+    <script>
+        function downloadVideo() {
+            // 显示加载动画
+            document.getElementById("loading-icon").style.display = "inline";
+
+            // 禁用下载按钮
+            document.querySelector('button').disabled = true;
+
+            var form = document.getElementById("downloadForm");
+            form.submit();
+
+            // 模拟下载完成后的操作（待完善）
+            setTimeout(function() {
+                // 隐藏加载动画
+                document.getElementById("loading-icon").style.display = "none";
+
+                // 显示下载完成标志
+                document.getElementById("download-complete-icon").style.display = "inline";
+
+                // 启用下载按钮
+                document.querySelector('button').disabled = false;
+            }, 5000); // 模拟5秒后下载完成
+        }
+    </script>
+</body>
+</html>
